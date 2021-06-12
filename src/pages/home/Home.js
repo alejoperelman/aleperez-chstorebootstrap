@@ -1,10 +1,6 @@
-import { NavBar } from '../../components/navBar/NavBar'
+import { NavBarAp } from '../../components/navBarAp/NavBarAp'
 import { ItemListContainer } from '../../components/itemListContainer/ItemListContainer'
 import './Home.css';
-
-
-
-
 
 export function Home() {
   
@@ -12,7 +8,7 @@ export function Home() {
 
   return (
     <div className="App">
-      <NavBar user={fullname} />
+      <NavBarAp user={fullname} />
       <ItemListContainer />
     </div>
   )
