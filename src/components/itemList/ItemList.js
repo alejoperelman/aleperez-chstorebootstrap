@@ -8,7 +8,6 @@ const articulos = [
   ];
 
 export const ItemList = () => {
-    render () {
         const solicitoItems = new Promise((resolve, reject) => {
             setTimeout (() => {
                 console.log ("Dentro de TimeOut")
@@ -30,7 +29,6 @@ export const ItemList = () => {
                 <h2>{item}</h2>
             </div>
             );
-        }
 }
 export default ItemList;
   
