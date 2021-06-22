@@ -10,7 +10,7 @@ export const ItemListContainer = () => {
         <>
                 <h1>Tus Productos Pronto Aqui</h1>
             {   /*<ItemList />  */}    
-                <ItemCount stock={stock}  initial={initial} />
+                <ItemCount initial={initial} stock={stock} />
         </>
     )
 }

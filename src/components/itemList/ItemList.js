@@ -26,7 +26,7 @@ export const ItemList = () => {
                 );
            return (
             <div className="App">
-                <h1>Hello World</h1>
+                <h1>Items</h1>
                 <h2>{item}</h2>
             </div>
             );
