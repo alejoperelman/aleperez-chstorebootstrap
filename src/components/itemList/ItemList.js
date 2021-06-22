@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+//import { render } from 'react-dom';
 //import { ItemCount } from '../../components/itemCount/ItemCount'
 const articulos = [
     { id: 1, name: "Mouse", price: 10 },
@@ -10,23 +10,22 @@ const articulos = [
 export const ItemList = () => {
         const solicitoItems = new Promise((resolve, reject) => {
             setTimeout (() => {
-                console.log ("Dentro de TimeOut")
+                console.log ("Estableciendo Conexion...")
+                resolve(true)
             },3000)
-            console.log ("Fuera TimeOut")
             })
-            
             solicitoItems.then (
-                (item) => {
-                    console.log ("PASO")
+                item => { 
+                   console.log ("Conexion Establecida...")
+                   //console.log (articulos.map(articulos))
                 },
-                (error) => {
-                    console.log ("Error")
+                error => {
+                    console.log ("Sin Conexion...")
                 }
                 );
            return (
-            <div className="App">
+            <div className="items">
                 <h1>Items</h1>
-                <h2>{item}</h2>
             </div>
             );
 }
