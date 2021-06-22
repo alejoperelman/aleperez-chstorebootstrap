@@ -15,7 +15,6 @@ export const ItemCount = ({initial, stock, onAdd}) => {
     return (
     <div>
       <button onClick={CountClick}>+</button>
-      <button onClick={CountClick}>-</button>
       <h1>Cantidad de Articulos {count} </h1>
       <p></p>
     </div>
