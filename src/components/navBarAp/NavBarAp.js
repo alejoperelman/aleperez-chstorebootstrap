@@ -2,7 +2,7 @@ import { Navbar, Nav, NavDropdown }  from 'react-bootstrap'
 import CartWidget from '../cartWidget/CartWidget'
 import './NavBarAp.css'
 
-export const NavBarAp = (props) => {
+export const NavBarAp = ({user}) => {
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -21,7 +21,7 @@ export const NavBarAp = (props) => {
                 <Nav.Link href="#pricing">Contacto</Nav.Link>
                 </Nav>
                 <Nav>
-                <Nav.Link href="#deets">Bienvenido: {props.user}</Nav.Link>
+                <Nav.Link href="#deets">Bienvenido: {user}</Nav.Link>
                 <Nav.Link href="#pricing"> <CartWidget /> </Nav.Link>
                 </Nav>
             </Navbar.Collapse>

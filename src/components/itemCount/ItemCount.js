@@ -16,11 +16,11 @@ export const ItemCount = ({initial, stock, onAdd}) => {
       }
       else
       {
-        if ( count > 0 ){
+        if ( count >= 1 ){
           setMensaje("Item Restado")
           setCount(count -1);
         } else {
-          setMensaje("No puede quitar el item, cantidad debe ser mayor a 0")
+          setMensaje("No puede quitar el item, cantidad debe ser mayor o igual 0")
         }
       }
 
@@ -29,7 +29,7 @@ export const ItemCount = ({initial, stock, onAdd}) => {
     <div>
       <button onClick={ () => {CountClick("+")}}>+</button>
       <button onClick={ () => {CountClick("-")}}>-</button>
-      <h3>Cantidad de Articulos {count} </h3>
+      <h6>Cantidad: {count} </h6>
       <p>{mensaje}</p>
     </div>
     )
