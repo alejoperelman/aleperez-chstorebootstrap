@@ -1,11 +1,19 @@
 import React from 'react';
 import {useState} from 'react';
 import { ItemCount } from '../itemCount/ItemCount'
-import { Card, Button }  from 'react-bootstrap'
+import { Card, Button, Modal }  from 'react-bootstrap'
+import { ItemDetailContainer } from '../itemDetailContainer/ItemDetailContainer'
+
 
 export const Item = ({id, nombre, precio}) => {
     const [stock, setStock] = useState(5)
     const [initial, setInitial] = useState(1)
+    const [nomProd, setProducto] = useState("")
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
+    
     function onAdd () {
             alert("Agregado al Carro")
     }
@@ -19,10 +27,30 @@ export const Item = ({id, nombre, precio}) => {
                     Precio U$S {precio}
                 </Card.Text>
                 <ItemCount initial={initial} stock={stock} onAdd />
-                <Button variant="primary">Detalles</Button>
+                <Button onClick={handleShow} variant="primary">Detalles</Button>
                 <Button onClick={ () => {onAdd()}} variant="danger">Agregar Al Carro</Button>
             </Card.Body>
         </Card>
+        <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+        >
+        <Modal.Header closeButton>
+          <Modal.Title>Detalle {nombre}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ItemDetailContainer idProd={id}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary">Agregar al Carro</Button>
+        </Modal.Footer>
+        </Modal>            
+
     </>
     )
 }
