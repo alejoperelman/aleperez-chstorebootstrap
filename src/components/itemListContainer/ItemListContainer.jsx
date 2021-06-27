@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
-import { ItemCount } from '../../components/itemCount/ItemCount'
-import { ItemList } from '../../components/itemList/ItemList'
+import { ItemCount } from '../itemCount/ItemCount'
+import { ItemList } from '../itemList/ItemList'
 
 const articulos = [
     { id: 1, name: "Mouse", price: 10 },
@@ -29,7 +29,9 @@ export const ItemListContainer = () => {
     return (
         <>
             <h1>Listado de Productos</h1>
-            <ItemList listadoItems={items}/>
+            <div className="contenedorItems">
+                <ItemList listadoItems={items}/>
+            </div>
         </>
     )
 }

@@ -22,6 +22,7 @@ export const ItemCount = ({initial, stock, onAdd}) => {
         } else {
           setMensaje("No puede quitar el item, cantidad debe ser mayor o igual 0")
         }
+        //aca deberia actualizar el carro con Count
       }
 
     }
