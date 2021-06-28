@@ -5,10 +5,9 @@ import { Card, Button, Modal }  from 'react-bootstrap'
 import { ItemDetailContainer } from '../itemDetailContainer/ItemDetailContainer'
 
 
-export const Item = ({id, nombre, precio}) => {
+export const Item = ({id, nombre, detalle, precio}) => {
     const [stock, setStock] = useState(5)
     const [initial, setInitial] = useState(1)
-    const [nomProd, setProducto] = useState("")
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false)
@@ -41,7 +40,7 @@ export const Item = ({id, nombre, precio}) => {
           <Modal.Title>Detalle {nombre}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ItemDetailContainer idProd={id}/>
+          <ItemDetailContainer id={id} nombre={nombre} detalle={detalle} precio={precio} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

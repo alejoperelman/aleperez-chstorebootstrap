@@ -1,12 +1,14 @@
 import React from 'react';
-import {useState} from 'react';
-import { ItemCount } from '../itemCount/ItemCount'
-import { ItemList } from '../itemList/ItemList'
 
-export const ItemDetail = () => {
+export const ItemDetail = ({id, nombre, detalle, precio}) => {
     return (
         <>
-    <h1> Es un Detalle </h1>
+            <div>
+                <h3>{nombre}</h3>    
+                <h4>Detalle</h4>    
+                <p>{detalle}</p>
+                <h4>Precio U$S: {precio}</h4>    
+            </div>
         </>
     )
 }

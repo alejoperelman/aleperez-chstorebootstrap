@@ -1,6 +1,5 @@
 import React from 'react';
 import {useState} from 'react';
-import { ItemCount } from '../itemCount/ItemCount'
 import { ItemList } from '../itemList/ItemList'
 
 const articulos = [
