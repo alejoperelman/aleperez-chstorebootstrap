@@ -1,15 +1,12 @@
-import { NavBarAp } from '../../components/navBarAp/NavBarAp'
+import { Page } from '../../components/page/Page'
 import { ItemListContainer } from '../../components/itemListContainer/ItemListContainer'
 import './Home.css';
 
 export function Home() {
-  
-  const fullname =  "Ale Perez"
-
+ 
   return (
-    <div className="App">
-      <NavBarAp user={fullname} />
+    <Page>
       <ItemListContainer />
-    </div>
+    </Page>
   )
 }
