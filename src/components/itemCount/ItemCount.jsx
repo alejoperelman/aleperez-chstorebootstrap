@@ -21,8 +21,8 @@ export const ItemCount = ({initial, stock, onAdd}) => {
     <div>
       <Button onClick={() => CountClick('+')}>+</Button>
       <Button onClick={() => CountClick('-')}>-</Button>
-      <p>Cantidad: {count}</p>
-      <Button disabled={ {count} === 0 ? "False" : "True" } onClick={onAdd} variant="danger">Agregar al Carrito</Button>
+      <p>Cantidad: { count }</p>
+      <Button disabled={  count  > 0 ? false : true } onClick={onAdd} variant="danger">Agregar al Carrito</Button>
     </div>
     )
 }

@@ -12,13 +12,14 @@ const articulos = [
     { id: 6, name: "AIO Lenovo", category: "Hardware", detail: "Procesador: Intel Core i3-10100 Pantalla: 21.5 Full HD (1920x1080) Memoria: 8GB DDR4 3200 Mhz SODIMM (Máx. 64GB) Disco: 256GB M.2 2280 PCIe TLC Segundo disco: Admite segundo disco 2,5 Gráficos: Intel UHD graphics 630 Puertos: 4xUSB 3.2 Gen 1 (one supports Smart Power On), 1xRJ-45, 1x DP, 1xUSB 3.2 Gen 1, 1xUSB 3.2 Gen 2, 1xUSB-C 3.2 Gen 1 (5V/3A charging), 1xheadphone / microphone combo jack (3.5mm)+ incluye adaptador DP-HDMI Sistema Operativo: Windows 10 PRO 64 Cámara", price: 700 },
     { id: 7, name: "Windows 11" , category: "Software", detail: "Windows 11 ofrece un espacio tranquilo y creativo en el que puedes dedicarte a lo que te apasiona a través de una experiencia totalmente nueva. Desde un menú Inicio revitalizado hasta nuevas maneras de conectarte con tus personas, favoritas, noticias, juegos y contenido... Windows 11 es el lugar donde pensar, expresarte y crear de manera natural.", price: 150},
     { id: 8, name: "Red Hat Linux 8", category: "Software", detail: "Red Hat Enterprise Linux 8 es el sistema operativo inteligente para la nube híbrida. Todas las cargas de trabajo. Todos los entornos. Un solo sistema operativo.", price: 700 },
-    { id: 9, name: "Hosting", category: "Servicio", detail: "Mejor Servicio con más del 96% de aprobación desde 2004. Hosting y Dominio Todo Incluido. Tu Sitio Necesita Mejor Servicio de Hosting Sin Problemas. Necesitas Crecer Hoy! 6 Niveles de Seguridad", price: 50 },
-    { id: 10, name: "Azure Database", category: "Servicio", detail: "Utilice una base de datos relacional como servicio para hospedar aplicaciones de alto rendimiento controladas por datos.", price: 700 }
+    { id: 9, name: "Hosting", category: "Servicios", detail: "Mejor Servicio con más del 96% de aprobación desde 2004. Hosting y Dominio Todo Incluido. Tu Sitio Necesita Mejor Servicio de Hosting Sin Problemas. Necesitas Crecer Hoy! 6 Niveles de Seguridad", price: 50 },
+    { id: 10, name: "Azure Database", category: "Servicios", detail: "Utilice una base de datos relacional como servicio para hospedar aplicaciones de alto rendimiento controladas por datos.", price: 700 }
   ];
   
 export const ItemListContainer = () => {
     const {id} = useParams ()
     const [items, setItems] = useState([])
+    const [fitredItems, setFiltredItems] = useState([])
     
     console.log (id)
 
@@ -32,7 +33,8 @@ export const ItemListContainer = () => {
             getItems.then (
                 articulos => { 
                    console.log ("Conexion Establecida...")
-                   setItems(articulos)   
+                   const categoryItems = articulos.filter(item => item.category.toLowerCase() == id)
+                   setItems(categoryItems)   
                 },
                 error => {
                     console.log ("Sin Conexion...")
