@@ -1,27 +1,42 @@
 import React from 'react';
-//import { ItemCount } from '../itemCount/ItemCount'
+import {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import { ItemDetail } from '../itemDetail/ItemDetail'
 
-export const ItemDetailContainer = ({id, nombre, detalle, precio}) => {
-    const buscoItem = new Promise((resolve, reject) => {
-        setTimeout (() => {
-            console.log ("Cargando Detalles")
-            resolve()
-        },2000)
-        })
-        buscoItem.then (
-            detalles => {
-                console.log ("Detalles Prontos")
-            },
-            error => {
-                console.log ("No es Posible Cargar Detalles")
-            }
-            );
+const articulo = 
+{   id: 1,
+    name: "Mouse Genius",
+    category: "Hardware" ,
+    detail: "Mouse inalámbrico Genius NX-7000 con tecnología BlueEye, para una elevada precisión de rastreo y puede usarse sobre casi cualquier superficie.",
+    price: 10
+};
+
+export const ItemDetailContainer = () => {
+    const { id } = useParams ()
+    const [item, setItem] = useState([])  
+
+    useEffect(() => {
+        const getItem = new Promise((resolve, reject) => {
+            setTimeout (() => {
+                console.log ("Cargando Detalles")
+                resolve(articulo)
+            },2000)
+            })
+            getItem.then (
+                articulo => {
+                    console.log ("Detalles Prontos")
+                    setItem(articulo)
+                },
+                error => {
+                    console.log ("No es Posible Cargar Detalles")
+                }
+                );
+    }, [id])    
     return (
        <>
-        <div className="contenedorDetalis">
-            <ItemDetail id={id} nombre={nombre} detalle={detalle} precio={precio} /> 
-        </div>
+        <section className="contenedorDetalles">
+            <ItemDetail item={item} /> 
+        </section>
        </>
     )
 }

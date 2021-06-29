@@ -1,9 +1,5 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
-import { ItemList } from '../itemList/ItemList'
+[
 
-const articulos = [
     { id: 1, name: "Mouse Genius", category: "Hardware" ,detail: "Mouse inalámbrico Genius NX-7000 con tecnología BlueEye, para una elevada precisión de rastreo y puede usarse sobre casi cualquier superficie.", price: 10 },
     { id: 2, name: "Notebook HP", category: "Hardware", detail: "HP ENVY X360 con procesador AMD Ryzen 5", price: 1000},
     { id: 3, name: "Intel NUC", category: "Hardware", detail: "Las Mini-PCs Intel® NUC hacen que un potente procesador, una memoria veloz y un gran almacenamiento comparable al de los equipos de desktop de tamaño regular más recientes quepan en los formatos más pequeños que podemos diseñar.", price: 700 },
@@ -14,39 +10,5 @@ const articulos = [
     { id: 8, name: "Red Hat Linux 8", category: "Software", detail: "Red Hat Enterprise Linux 8 es el sistema operativo inteligente para la nube híbrida. Todas las cargas de trabajo. Todos los entornos. Un solo sistema operativo.", price: 700 },
     { id: 9, name: "Hosting", category: "Servicio", detail: "Mejor Servicio con más del 96% de aprobación desde 2004. Hosting y Dominio Todo Incluido. Tu Sitio Necesita Mejor Servicio de Hosting Sin Problemas. Necesitas Crecer Hoy! 6 Niveles de Seguridad", price: 50 },
     { id: 10, name: "Azure Database", category: "Servicio", detail: "Utilice una base de datos relacional como servicio para hospedar aplicaciones de alto rendimiento controladas por datos.", price: 700 }
-  ];
-  
-export const ItemListContainer = () => {
-    const {id} = useParams ()
-    const [items, setItems] = useState([])
-    
-    console.log (id)
 
-    useEffect(() => {
-        const getItems = new Promise((resolve, reject) => {
-            setTimeout (() => {
-                console.log ("Estableciendo Conexion...")
-                resolve(articulos)
-            },2000)
-            })
-            getItems.then (
-                articulos => { 
-                   console.log ("Conexion Establecida...")
-                   setItems(articulos)   
-                },
-                error => {
-                    console.log ("Sin Conexion...")
-                });
-    },[id])      
-
-    return (
-        <>
-            <h1>Listado de Productos</h1>
-            <div className="contenedorItems">
-                <ItemList listadoItems={items}/>
-            </div>
-        </>
-    )
-}
-
-export default ItemListContainer;
+]

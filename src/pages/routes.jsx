@@ -1,13 +1,23 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom' 
-import { Home } from './home/Home'
+import { NavBarAp } from '../components/navBarAp/NavBarAp'
+import { ItemListContainer } from '../components/itemListContainer/ItemListContainer'
+import { ItemDetailContainer } from '../components/itemDetailContainer/ItemDetailContainer'
 
 export const Routes = () => {
     return (
         <Router>
+            <main>
+                <NavBarAp />
             <Switch>
                 <Route exact path='/'>
-                    <Home />
+                    <ItemListContainer />
+                </Route>
+                <Route exact path='/category/:id'>
+                    <ItemListContainer />
+                </Route>
+                <Route exact path='/item/:id'>
+                    <ItemDetailContainer />
                 </Route>
                 <Route path='*'>
                     <div>
@@ -15,6 +25,7 @@ export const Routes = () => {
                     </div>
                 </Route>
             </Switch>
+            </main>
         </Router>
     )
 }
