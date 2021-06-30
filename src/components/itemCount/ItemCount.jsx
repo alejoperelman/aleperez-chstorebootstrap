@@ -19,10 +19,10 @@ export const ItemCount = ({initial, stock, onAdd}) => {
 
     return (
     <div>
-      <Button onClick={() => CountClick('+')}>+</Button>
-      <Button onClick={() => CountClick('-')}>-</Button>
+      <Button variant="light" onClick={() => CountClick('+')}>+</Button>
+      <Button variant="light" onClick={() => CountClick('-')}>-</Button>
       <p>Cantidad: { count }</p>
-      <Button disabled={  count  > 0 ? false : true } onClick={onAdd} variant="danger">Agregar al Carrito</Button>
+      <Button disabled={  count  > 0 ? false : true } onClick={onAdd} variant="dark">Agregar al Carrito</Button>
     </div>
     )
 }

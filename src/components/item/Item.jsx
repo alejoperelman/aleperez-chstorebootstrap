@@ -2,7 +2,6 @@ import React from 'react';
 import {useState} from 'react';
 import { ItemCount } from '../itemCount/ItemCount'
 import { Card, Button, Modal }  from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { ItemDetailContainer } from '../itemDetailContainer/ItemDetailContainer'
 
 

@@ -1,3 +1,15 @@
+# ENTREGA INTERMEDIA DE PROYECTO FINAL
+
+# Introduccion
+
+El proyecto pretende ser una tienda de articulos informaticos, permitiendo la navegacion entre categorias y permitiendo ver detalles del producto seleccionado.
+El enfoque seleccionado es tratar de hacer lo mas facil posible la navegacion y la compra al usuario teniendo en cuenta las limitaciones del desarrollador.
+
+# Dependencias
+
+`"react-icons"`: "^4.2.0", Se utiliza para representar el icono del carro de compras de momento
+`"react-bootstrap"`: "^1.6.1", Debido al escaso/nulo conocimiento del estudiante sobre CSS y sus estilos se definio avanzar con esta libreria para no perder tiempo en detalles esteticos que no podria corregir en tiempos de entrega solicitados.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

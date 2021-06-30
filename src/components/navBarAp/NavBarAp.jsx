@@ -20,7 +20,7 @@ export const NavBarAp = ({user}) => {
                 </Nav>
                 <Nav>
                 <Nav.Link href="#deets">Bienvenido: {user}</Nav.Link>
-                <Nav.Link href="#pricing"> <CartWidget /> </Nav.Link>
+                <Nav.Link href="/cart"> <CartWidget /> </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             </Navbar>

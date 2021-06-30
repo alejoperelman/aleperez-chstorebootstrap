@@ -19,7 +19,7 @@ const articulos = [
 export const ItemListContainer = () => {
     const {id} = useParams ()
     const [items, setItems] = useState([])
-    const [fitredItems, setFiltredItems] = useState([])
+    //const [fitredItems, setFiltredItems] = useState([])
     
     console.log (id)
 
@@ -33,8 +33,12 @@ export const ItemListContainer = () => {
             getItems.then (
                 articulos => { 
                    console.log ("Conexion Establecida...")
-                   const categoryItems = articulos.filter(item => item.category.toLowerCase() == id)
-                   setItems(categoryItems)   
+                   if (id===undefined){
+                    setItems(articulos)
+                   } else {
+                    const categoryItems = articulos.filter(item => item.category.toLowerCase() === id)
+                    setItems(categoryItems)   
+                   }
                 },
                 error => {
                     console.log ("Sin Conexion...")
