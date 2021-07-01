@@ -56,7 +56,6 @@ export const ItemDetailContainer = () => {
     return (
        <>
         <section className="contenedorDetalles">
-            {console.log(item)}
             <ItemDetail item={item} /> 
         </section>
        </>

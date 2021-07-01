@@ -2,6 +2,8 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemList } from '../itemList/ItemList'
+import { Container } from 'react-bootstrap'
+import { Loading } from '../loading/Loading'
 
 const articulos = [
     { id: 1, name: "Mouse Genius", category: "Hardware" ,detail: "Mouse inalámbrico Genius NX-7000 con tecnología BlueEye, para una elevada precisión de rastreo y puede usarse sobre casi cualquier superficie.", price: 10 },
@@ -19,6 +21,7 @@ const articulos = [
 export const ItemListContainer = () => {
     const {id} = useParams ()
     const [items, setItems] = useState([])
+    const [loading, setLoading] = useState(false)
     //const [fitredItems, setFiltredItems] = useState([])
     
     console.log (id)
@@ -26,6 +29,7 @@ export const ItemListContainer = () => {
     useEffect(() => {
         const getItems = new Promise((resolve, reject) => {
             setTimeout (() => {
+                setLoading(true)
                 console.log ("Estableciendo Conexion...")
                 resolve(articulos)
             },2000)
@@ -33,6 +37,7 @@ export const ItemListContainer = () => {
             getItems.then (
                 articulos => { 
                    console.log ("Conexion Establecida...")
+                   setLoading(false)
                    if (id===undefined){
                     setItems(articulos)
                    } else {
@@ -41,16 +46,17 @@ export const ItemListContainer = () => {
                    }
                 },
                 error => {
+                    setLoading(false)
                     console.log ("Sin Conexion...")
                 });
     },[id])      
 
     return (
         <>
+        <Container>
             <h1>Listado de Productos</h1>
-            <div className="contenedorItems">
-                <ItemList listadoItems={items}/>
-            </div>
+            {{ loading }?  <ItemList listadoItems={items}/> : <Loading /> }
+        </Container>
         </>
     )
 }

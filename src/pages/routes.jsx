@@ -9,7 +9,7 @@ export const Routes = () => {
     return (
         <Router>
             <main>
-                <NavBarAp user="Daniel :-)"/>
+                <NavBarAp user="Alejandro Perez"/>
             <Switch>
                 <Route exact path='/'>
                     <ItemListContainer />
