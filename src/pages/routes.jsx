@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { NavBarAp } from '../components/navBarAp/NavBarAp'
 import { ItemListContainer } from '../components/itemListContainer/ItemListContainer'
 import { ItemDetailContainer } from '../components/itemDetailContainer/ItemDetailContainer'
+import { Cart } from '../components/cart/Cart'
 import NotFound from '../components/notFound/NotFound'
 
 export const Routes = () => {
@@ -21,11 +22,7 @@ export const Routes = () => {
                     <ItemDetailContainer />
                 </Route>
                 <Route exact path='/cart'>
-                    <h4>Carro de Compras</h4>    
-                    <p>Proximamente</p>
-                    <Link to="/">
-                        <p> volver </p>
-                    </Link>
+                    <Cart />
                 </Route>
                 <Route path='*'>
                     <NotFound />

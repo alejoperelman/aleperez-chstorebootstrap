@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes } from './pages/routes'
+import { Routes } from './pages/routes';
+import { CartProvider } from './context/cartContext/cartContex';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <CartProvider>
+      <Routes />
+    </CartProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
+

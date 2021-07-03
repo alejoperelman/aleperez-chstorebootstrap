@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 import { ItemCount } from '../itemCount/ItemCount'
 import { Card, Button, Modal }  from 'react-bootstrap'
 import { ItemDetailContainer } from '../itemDetailContainer/ItemDetailContainer'
@@ -14,7 +14,8 @@ export const Item = ({id, nombre, detalle, precio}) => {
     const handleShow = () => setShow(true)
 
     const onAdd = () => {
-      alert("Agregado al carro") 
+      alert("Agregado al carro")
+
     }
     
     return (
@@ -26,7 +27,7 @@ export const Item = ({id, nombre, detalle, precio}) => {
                 <Card.Text>
                     Precio U$S {precio}
                 </Card.Text>
-                <ItemCount initial={initial} stock={stock} onAdd />
+                {/* <ItemCount initial={initial} stock={stock} onAdd /> Aca llamo al ItemCount en la Card*/}
                 <Button onClick={handleShow} variant="primary">Detalles</Button>
             </Card.Body>
         </Card>
@@ -42,11 +43,6 @@ export const Item = ({id, nombre, detalle, precio}) => {
         <Modal.Body>
           <ItemDetailContainer />
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
         </Modal>            
 
     </>
