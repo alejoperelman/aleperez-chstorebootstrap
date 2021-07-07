@@ -3,10 +3,12 @@ import { FaShoppingCart } from "react-icons/fa";
 
 export const CartWidget = () => {
     return (
-            // <ul>
-            //     <li> <FaShoppingCart /></li>
-            // </ul>
+        <>
+            <div className="itemsOnCard">
             <FaShoppingCart />
+            4
+            </div>
+        </>
     )
 }
 

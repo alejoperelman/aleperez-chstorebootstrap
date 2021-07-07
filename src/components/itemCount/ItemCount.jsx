@@ -19,9 +19,9 @@ export const ItemCount = ({initial, stock, onAdd=()=>{} }) => {
 
     return (
     <div>
-      <Button variant="light" onClick={() => CountClick('+')}> + </Button>
-      { count }
       <Button variant="light" onClick={() => CountClick('-')}> - </Button>
+      { count }
+      <Button variant="light" onClick={() => CountClick('+')}> + </Button>      
       <p></p>
       <Button disabled={  count  > 0 ? false : true } onClick={()=> onAdd(count)} variant="dark">Agregar al Carrito</Button>
     </div>
