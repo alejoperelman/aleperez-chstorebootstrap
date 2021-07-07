@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link }   from 'react-router-dom'
 import { ItemCount } from '../itemCount/ItemCount'
 import { Card, Button, Modal }  from 'react-bootstrap'
 import { ItemDetailContainer } from '../itemDetailContainer/ItemDetailContainer'
@@ -17,10 +18,9 @@ export const Item = ({id, nombre, detalle, precio}) => {
       alert("Agregado al carro")
 
     }
-    
+    console.log(id)   
     return (
     <>
-
         <Card style={{ width: '20rem' }}>
             <Card.Body>
                 <Card.Title>{nombre}</Card.Title>
@@ -28,7 +28,9 @@ export const Item = ({id, nombre, detalle, precio}) => {
                     Precio U$S {precio}
                 </Card.Text>
                 {/* <ItemCount initial={initial} stock={stock} onAdd /> Aca llamo al ItemCount en la Card*/}
-                <Button onClick={handleShow} variant="primary">Detalles</Button>
+                <Link to={`/item/:${id}`}>
+                  <Button onClick={handleShow} variant="primary">Detalles</Button>
+                </Link>
             </Card.Body>
         </Card>
         <Modal

@@ -4,6 +4,7 @@ import { Item } from '../item/Item'
 import { Container, Row }  from 'react-bootstrap'
 
 export const ItemList = ({listadoItems}) => {
+    console.log(listadoItems)
     return (
         <>
             <Row>

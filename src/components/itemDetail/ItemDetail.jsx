@@ -5,9 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Image }  from 'react-bootstrap';
 import { Button }  from 'react-bootstrap';
 import { CartContext } from '../../context/cartContext/CartContext';
-//import { isInCart } from '../../context/cartContext/CartContext';
 import { ItemCount } from '../itemCount/ItemCount';
-
 
 export const ItemDetail = ({ item }) => {
     const {cart, setCart } = useContext(CartContext);
@@ -16,7 +14,7 @@ export const ItemDetail = ({ item }) => {
     const [show, setShow] = useState(false);
     const [count, setCount] = useState(0);
     let history = useHistory();
-    const { isInCart } = useContext(CartContext)
+    const { addItem } = useContext(CartContext)
     const [items, setItems] = useState([])
     
     const onAdd = (quantity) => {
@@ -25,12 +23,12 @@ export const ItemDetail = ({ item }) => {
 
     const finPurcharse=( item ) => {
         const {id, name, category, detail, price} = item;
-        let existe = true
-        existe = isInCart(id)
+        addItem (item, count)
         console.log("ID:" + id)
-        console.log("Existe?:" + existe)
+        console.log(cart.length)
+        history.push("/cart")
     }
-
+    
     return (
         <>
             <div>

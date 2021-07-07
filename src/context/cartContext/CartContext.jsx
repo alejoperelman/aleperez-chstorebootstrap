@@ -6,37 +6,41 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
 
-    const addItem = (item) => {
-        const {id, name, category, detail, price} = item;
-        const existe = isInCart(item.id);
-
-        console.log("id en isInCart" + id)
-        if (existe) {
-            console("Esta en Cart");
+    const addItem = (item, qnty ) => {
+        const {id, name, category, detail, price, quantity} = item;
+        if (isInCart(item.id)) {
+            console.log("Esta en Cart")
+            // !quantity &&  quantity = 0
+            console.log(  item.quantity + " >-< " + qnty )
+            item.quantity = item.quantity + qnty
+            setCart(item)
         } else {
-            setCart({...cart, item });
-            console("No esta en Cart");
+            console.log("No esta en Cart")
+            cart.push(item)
         }
-        //Buscar un item en cart y sumar cantidades
-        console(cart);
+        console.log("Entre a funcion addItem")
+        console.log("largo:" + cart.length)
+        console.log(itemCount())
+
     }
 
-    const removeItem = (item) => {
-    //Buscar un item en cart y eliminarlo
-    //item = items.find(item => item.id == id)
-    }
-
+    
+    
     const clear = () => {
         setCart([]);
     }
 
-    const isInCart = (id) => {
-        return cart.some( prod => prod.id == id )
-     }
-    
-     const  itemCount = (item) => {
-        //retorna la cantidad de articulos en el carro
-        //para mostrar en el componente del carro
+    function isInCart (id) {
+        console.log("Entre a funcion isInCart")
+        console.log(cart.find( prod => prod.id == id ))
+        return cart.find( prod => prod.id == id )
+    }
+   
+    function itemCount () {
+        let total=0;
+            for(let i = 0; i <= cart.length; i++) total+=cart[i];
+            console.log(total);
+        return total
     }
 
 return (
@@ -45,5 +49,27 @@ return (
         </CartContext.Provider>
         )
 }
+
+ 
+    
+    
+    
+    
+    
+    // const removeItem = (item) => {
+    //     const {id, name, category, detail, price, quantity} = item;
+
+    //     if (isInCart(item.id)) {
+    //         console.log("Esta en Cart");
+    //         let carttemp = carttemp.filter(function(carttemp) {
+    //              carttemp.id !== item.id
+    //              return
+    //         })
+    //         setCart(carttemp)   
+    //     }
+    // //Buscar un item en cart y eliminarlo
+    // //item = items.find(item => item.id == id)
+    // }
+
 
 
