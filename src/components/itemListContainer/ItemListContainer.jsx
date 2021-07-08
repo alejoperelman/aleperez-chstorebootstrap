@@ -22,7 +22,6 @@ export const ItemListContainer = () => {
     const {id} = useParams ()
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(false)
-    //const [fitredItems, setFiltredItems] = useState([])
     
     console.log (id)
 
@@ -55,8 +54,8 @@ export const ItemListContainer = () => {
         <>
         <Container>
             <h1>Listado de Productos</h1>
-            {/* {loading ?  <ItemList listadoItems={items}/> :  <Loading /> } */}
-            { !loading &&  <ItemList listadoItems={items}/>} 
+             {loading ?  <Loading /> :  <ItemList listadoItems={items}/> } 
+            {/* { !loading &&  <ItemList listadoItems={items}/>}  */}
         </Container>
         </>
     )
