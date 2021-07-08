@@ -14,7 +14,8 @@ export const ItemDetail = ({ item }) => {
     const [show, setShow] = useState(false);
     const [count, setCount] = useState(0);
     let history = useHistory();
-    const { addItem } = useContext(CartContext)
+    const { addItem  } = useContext(CartContext)
+    // const { isInCart } = useContext(CartContext)
     const [items, setItems] = useState([])
     
     const onAdd = (quantity) => {
@@ -23,9 +24,7 @@ export const ItemDetail = ({ item }) => {
 
     const finPurcharse=( item ) => {
         const {id, name, category, detail, price} = item;
-        addItem (item, count)
-        console.log("ID:" + id)
-        console.log(cart.length)
+        addItem(id,count)
         history.push("/cart")
     }
     

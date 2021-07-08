@@ -18,7 +18,6 @@ export const Item = ({id, nombre, detalle, precio}) => {
       alert("Agregado al carro")
 
     }
-    console.log(id)   
     return (
     <>
         <Card style={{ width: '20rem' }}>
@@ -27,8 +26,7 @@ export const Item = ({id, nombre, detalle, precio}) => {
                 <Card.Text>
                     Precio U$S {precio}
                 </Card.Text>
-                {/* <ItemCount initial={initial} stock={stock} onAdd /> Aca llamo al ItemCount en la Card*/}
-                <Link to={`/item/:${id}`}>
+                <Link to={`/item/${id}`}>
                   <Button onClick={handleShow} variant="primary">Detalles</Button>
                 </Link>
             </Card.Body>

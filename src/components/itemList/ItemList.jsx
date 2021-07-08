@@ -4,11 +4,10 @@ import { Item } from '../item/Item'
 import { Container, Row }  from 'react-bootstrap'
 
 export const ItemList = ({listadoItems}) => {
-    console.log(listadoItems)
     return (
         <>
             <Row>
-                {listadoItems.map((articulo) =>  <Item key={articulo.id} nombre={articulo.name} detalle={articulo.detail} precio={articulo.price}/>)}
+                {listadoItems.map((articulo) =>  <Item id={articulo.id} nombre={articulo.name} detalle={articulo.detail} precio={articulo.price}/>)}
             </Row>
         </>
     )

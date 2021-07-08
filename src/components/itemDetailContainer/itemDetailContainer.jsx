@@ -38,7 +38,6 @@ export const ItemDetailContainer = () => {
             getItem.then (
                 items => {
                     setItem(items.find(item => item.id == id))
-                    //setItem(articulo)
                 },
                 error => {
                     console.log ("No es Posible Cargar Detalles")
