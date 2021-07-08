@@ -8,16 +8,17 @@ export const CartProvider = ({ children }) => {
 
     const addItem = (item, qnty ) => {
         const {id, name, category, detail, price} = item;
-        setCart([...cart, item]);
-        if (isInCart({id})) { 
-            console.log("Esta en Cart")
-            //Aca deberia hacer la logica de la suma de item
-            //que no se como es
-        } else {
-            console.log("No esta en Cart")
-        }
-        console.log (item)
-        console.log({cart})
+        if (cart.length > 0){
+            if (isInCart(id)) { 
+                //Aca deberia acumular la cantidad
+                const inCartItem = cart.filter(item => item.id == id).reduce((cant)  => item.cant +  qnty )
+                //  const cartTotal = cart.reduce((total, { price = 0 }) => total + price, 0);
+            } else {
+                setCart([...cart,  {id, name, price, cant: qnty }]);
+            }
+    }else{
+        setCart([...cart,  {id, name, price, cant: qnty }]);
+    }
     }
 
     const clear = () => {
@@ -29,13 +30,31 @@ export const CartProvider = ({ children }) => {
     }
    
     function itemCount () {
+        //Aca quizas se podria usar reduce en cart con el campo cant
+
         let total=0;
             for(let i = 0; i <= cart.length; i++) total+=cart[i];
             return total
     }
 
+    function isEmpty() {
+        if (cart.length > 0) { 
+            console.log("tiene Items")
+            return false
+        } else {
+            console.log("NO tiene Items")
+            return true
+        }
+    }
+
+    function removeItem (item) {
+        let hardCopy = [...cart];
+        hardCopy = hardCopy.filter((cartItem) => cartItem.id !== item.id);
+        setCart(hardCopy);
+    }
+
 return (
-        <CartContext.Provider value={{ cart, addItem, isInCart, itemCount }}>
+        <CartContext.Provider value={{ cart, addItem, isInCart, itemCount, isEmpty }}>
             {children}
         </CartContext.Provider>
         )
@@ -50,7 +69,6 @@ return (
         //     // setCart({idProd:id, cantidad: qnty})
         // }
 
-
                 // if (isInCart(id)) {
         //     console.log("Esta en Carro")
         //     // const product = cart.find((i) => i.id === id);
@@ -59,11 +77,5 @@ return (
         //    console.log("No esta en Carro")
         //    setCart({... cart, idProd:id, cantidad: qnty})
         // }
-
-
         
-    // function removeItem (item) {
-    //     let hardCopy = [...cart];
-    //     hardCopy = hardCopy.filter((cartItem) => cartItem.id !== item.id);
-    //     setCart(hardCopy);
-    // }
+

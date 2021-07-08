@@ -16,6 +16,7 @@ export const ItemDetail = ({ item }) => {
     let history = useHistory();
     const { addItem  } = useContext(CartContext)
     const { isInCart } = useContext(CartContext)
+
     // const [ items, setItems] = useState([])
     
     const onAdd = (quantity) => {

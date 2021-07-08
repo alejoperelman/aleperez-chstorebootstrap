@@ -54,7 +54,7 @@ export const ItemListContainer = () => {
         <>
         <Container>
             <h1>Listado de Productos</h1>
-             {loading ?  <Loading /> :  <ItemList listadoItems={items}/> } 
+             {loading ?<Loading /> :<ItemList listadoItems={items}/> } 
             {/* { !loading &&  <ItemList listadoItems={items}/>}  */}
         </Container>
         </>

@@ -5,7 +5,6 @@ import { ItemCount } from '../itemCount/ItemCount'
 import { Card, Button, Modal }  from 'react-bootstrap'
 import { ItemDetailContainer } from '../itemDetailContainer/ItemDetailContainer'
 
-
 export const Item = ({id, nombre, detalle, precio}) => {
     const [stock, setStock] = useState(5)
     const [initial, setInitial] = useState(0)
@@ -16,8 +15,8 @@ export const Item = ({id, nombre, detalle, precio}) => {
 
     const onAdd = () => {
       alert("Agregado al carro")
-
     }
+
     return (
     <>
         <Card style={{ width: '20rem' }}>
