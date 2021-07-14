@@ -5,33 +5,32 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]) 
-
+    
     const addItem = (item, qnty ) => {
         const {id, name, category, detail, price} = item;
+        const newCart = cart;
         if (cart.length > 0){
             if (isInCart(id)) { 
-                //Aca deberia acumular la cantidad
-                const inCartItem = cart.filter(item => item.id == id).reduce((cant)  => item.cant +  qnty )
-                //  const cartTotal = cart.reduce((total, { price = 0 }) => total + price, 0);
+                let index = cart.findIndex(obj => obj.item.id === item.id )
+                newCart[index].cant = newCart[index].cant + qnty;
+                setCart(newCart);
             } else {
                 setCart([...cart,  {id, name, price, cant: qnty }]);
             }
-    }else{
-        setCart([...cart,  {id, name, price, cant: qnty }]);
+        }else{
+            setCart([...cart,  {id, name, price, cant: qnty }]);
+        }
     }
-    }
-
-    const clear = () => {
-        setCart([]);
-    }
+    const clear = () => { cart.splice(0) }
 
     function isInCart (id) {
+        console.log(id)
+        console.log(cart)
         return cart.some((prod) => prod.id == id )
     }
    
     function itemCount () {
         //Aca quizas se podria usar reduce en cart con el campo cant
-
         let total=0;
             for(let i = 0; i <= cart.length; i++) total+=cart[i];
             return total
@@ -54,28 +53,8 @@ export const CartProvider = ({ children }) => {
     }
 
 return (
-        <CartContext.Provider value={{ cart, addItem, isInCart, itemCount, isEmpty }}>
+        <CartContext.Provider value={{ cart, addItem, isInCart, itemCount, isEmpty, clear, removeItem }}>
             {children}
         </CartContext.Provider>
         )
 }
-
-        // if (isInCart(id)) {
-        //     console.log("Esta en Cart")
-        //     setCart({... cart, idProd:id, cantidad: qnty})
-        //     console.log(cart)
-        // } else {
-        //     console.log("No esta en Cart")
-        //     // setCart({idProd:id, cantidad: qnty})
-        // }
-
-                // if (isInCart(id)) {
-        //     console.log("Esta en Carro")
-        //     // const product = cart.find((i) => i.id === id);
-        //     setCart({... cart, idProd:id, cantidad: qnty})
-        // } else {
-        //    console.log("No esta en Carro")
-        //    setCart({... cart, idProd:id, cantidad: qnty})
-        // }
-        
-
