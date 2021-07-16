@@ -11,24 +11,23 @@ export const ItemListContainer = () => {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(false)
     
-    console.log (id)
-
     useEffect(() => {
         setLoading(true)
         const itemCollection = database.collection("articulos");
         itemCollection.get().then ((querySnapshot) => {
             if(querySnapshot.size === 0) {
                 console.log("Sin resultados");
+                return
             }
-            setItems(querySnapshot.docs.map(doc => doc.data()));
+            setItems(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})));
         }).catch((error) => {
             console.log("Error buscando Items", error);
         }).finally(() => {
             console.log("Tengo datos");
             setLoading(false);
         });
-
     },[id])      
+
     return (
         <>
         <Container>
@@ -38,5 +37,4 @@ export const ItemListContainer = () => {
         </>
     )
 }
-
 export default ItemListContainer;

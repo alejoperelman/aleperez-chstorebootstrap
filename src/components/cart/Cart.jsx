@@ -45,7 +45,6 @@ export const Cart = () => {
                         </tr>                            
                     </tbody>                    
                 </Table>                    
-            {/* si no hay items mostrar mensaje de que no hay articulos */}
             <Link to="/" >
                 <Button variant="light" href="/cart"> Volver </Button>
             </Link>
@@ -55,6 +54,3 @@ export const Cart = () => {
     )
 }
 export default Cart;
-
-
-//                            { setTotal(articulo.cant * articulo.price) }
