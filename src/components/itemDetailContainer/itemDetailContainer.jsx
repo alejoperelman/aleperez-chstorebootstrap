@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemDetail } from '../itemDetail/ItemDetail'
 
@@ -16,19 +16,13 @@ const articulos = [
     { id: 10, name: "Azure Database", category: "Servicios", detail: "Utilice una base de datos relacional como servicio para hospedar aplicaciones de alto rendimiento controladas por datos.", price: 700 }
 ];
 
-//  const articulo = 
-//  {   id: 1,
-//      name: "Mouse Genius",
-//      category: "Hardware" ,
-//      detail: "Mouse inalámbrico Genius NX-7000 con tecnología BlueEye, para una elevada precisión de rastreo y puede usarse sobre casi cualquier superficie.",
-//      price: 10
-//  };
-
 export const ItemDetailContainer = () => {
     const { id } = useParams ()
-    const [item, setItem] = useState([])  
+    const [item, setItem] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         const getItem = new Promise((resolve, reject) => {
             setTimeout (() => {
                 console.log ("Cargando Detalles")
@@ -38,6 +32,7 @@ export const ItemDetailContainer = () => {
             getItem.then (
                 items => {
                     setItem(items.find(item => item.id == id))
+                    setLoading(false)
                 },
                 error => {
                     console.log ("No es Posible Cargar Detalles")

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Item } from '../item/Item'
-//import { useState } from 'react'
 import { Container, Row }  from 'react-bootstrap'
 
 export const ItemList = ({listadoItems}) => {

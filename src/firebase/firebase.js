@@ -11,7 +11,6 @@ import 'firebase/firestore'
     appId: "1:29932284748:web:a344906e25448738bb3de9"
   };
 
-
 //Inicializa database
 const fb = firebase.initializeApp(firebaseConfig)
 

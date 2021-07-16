@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { FaShoppingCart } from "react-icons/fa";
+import { Button, Badge }  from 'react-bootstrap';
 
 export const CartWidget = () => {
-    const { itemCount } = useContext(CartContext)
+   const { totalItems } = useContext(CartContext)
     return (
         <>
-            <div className="itemsOnCard">
-            <FaShoppingCart />
-            <b>{itemCount()}</b>
-            </div>
+                <FaShoppingCart />
+                <Badge bg="secondary">{ totalItems }</Badge>
         </>
     )
 }

@@ -1,47 +1,32 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { useHistory } from "react-router-dom";
-import { Image, Button, Container }  from 'react-bootstrap';
-//import { Button }  from 'react-bootstrap';
+import { Image, Button, Container, Table }  from 'react-bootstrap';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { ItemCount } from '../itemCount/ItemCount';
+import { Link } from "react-router-dom";
+
 
 export const ItemDetail = ({ item }) => {
-    const {cart, setCart } = useContext(CartContext);
-    const [stock, setStock] = useState(5);
-    const [initial, setInitial] = useState(1);
     const [show, setShow] = useState(false);
-    const [count, setCount] = useState(0);
-    let history = useHistory();
     const { addItem  } = useContext(CartContext)
-    const { isInCart } = useContext(CartContext)
 
-    // const [ items, setItems] = useState([])
-    
     const onAdd = (quantity) => {
-      setCount(quantity);
+      setShow(true);
+      addItem(item, quantity);
     }
-
-    const finPurcharse=( item ) => {
-        const {id, name, category, detail, price} = item;
-        addItem(item, count)
-        history.push("/cart")
-    }
-    
+  
     return (
         <>
             <Container>
-                <div>
-                    <Image src="http://placekitten.com/200/300" roundedCircle />
+                    <Image src="https://firebasestorage.googleapis.com/v0/b/coderhose-apstore.appspot.com/o/1.jpg?alt=media&token=bb5d866d-6295-42e2-b9a2-143be695afdc" roundedCircle />
                     <h4>Categoria</h4>    
                     <p>{item.category}</p>              
                     <h4>Detalle</h4>    
                     <p>{item.detail}</p>
                     <h4>Precio U$S: {item.price}</h4>
-                    {!count && <ItemCount initial={initial} stock={stock} onAdd={onAdd} />}
-                    {!!count && <Button variant="secondary"  onClick={() => finPurcharse(item)}>Termina tu Compra</Button>}
-                </div>
+                    {!show && <ItemCount initial={1} stock={10} onAdd={onAdd} />}
+                    {show && <Link to="/cart">Termina tu Compra</Link>}
             </Container>
         </>
     )
