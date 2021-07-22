@@ -3,13 +3,20 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { Link } from 'react-router-dom';
-import { Button, Row, Container, Table }  from 'react-bootstrap';
+import { Button, Container, Table, ButtonGroup, Alert }  from 'react-bootstrap';
+import { EndPurcharse } from '../endPurcharse/EndPurcharse'
 
 export const Cart = () => {
     const { removeItem, clear } = useContext(CartContext)
     const {cart, setCart } = useContext(CartContext);
     const { totalAmount, setTotalAmount} = useContext(CartContext);
-    let totales = 0;
+    const [loading, setLoading] = useState(false)
+    //let totales = 0;
+
+    const completaCompra = () => {
+        setLoading(true);
+      }
+
     return (
         <>
         <Container>
@@ -45,12 +52,19 @@ export const Cart = () => {
                         </tr>                            
                     </tbody>                    
                 </Table>                    
-            <Link to="/" >
-                <Button variant="light" href="/cart"> Volver </Button>
-            </Link>
-            <Button variant="danger" href="/" type="submit" onClick={() => clear()}>Limpiar el Carro </Button>
+            <ButtonGroup aria-label="Basic example">
+                <Link to="/" >
+                    <Button variant="light" href="/cart"> Volver </Button>
+                </Link>
+                <Button variant="success" type="submit" onClick={() => completaCompra()}>Completar Compra</Button>
+                <Button variant="danger" href="/" type="submit" onClick={() => clear()}>Limpiar el Carro </Button>
+            </ButtonGroup>
+
         </Container>
+        {loading ? <EndPurcharse /> :<Alert variant='success'>Finalice su Compra</Alert>} 
+        
        </>
+        
     )
 }
 export default Cart;
