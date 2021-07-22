@@ -20,9 +20,7 @@ export const ItemDetailContainer = () => {
                     console.log("Sin resultados");
                     return;
                 }
-                console.log("Item Encontrado");
                 setItem({id: doc.id, ...doc.data()});
-                console.log(item)
             }).catch((error) => {
                 console.log("Error buscando datos", error);
             }).finally(() => {
@@ -32,8 +30,7 @@ export const ItemDetailContainer = () => {
     return (
        <>
         <section className="contenedorDetalles">
-        
-        {loading ? <Loading /> :<ItemDetail item={item} /> } 
+            {loading ? <Loading /> :<ItemDetail item={item} /> } 
         </section>
        </>
     )

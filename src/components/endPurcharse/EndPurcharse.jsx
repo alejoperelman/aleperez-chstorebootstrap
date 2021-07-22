@@ -1,12 +1,11 @@
 import react from 'react';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/cartContext/CartContext';
-import { Button, Form, Container }  from 'react-bootstrap';
+import { Button, Form, Container, Alert }  from 'react-bootstrap';
 import { database } from '../../firebase/firebase';
 //import '@firebase/firestore';
 
 export const EndPurcharse = () => {
-
     const {cart, setCart } = useContext(CartContext);
     const { totalAmount, setTotalAmount} = useContext(CartContext);
     const [loading, setLoading] = useState(false);
@@ -18,16 +17,14 @@ export const EndPurcharse = () => {
             email:''
     });
     const [isFormDisabled, setIsFormDisabled] = useState(true);
-
     const onNameChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value});
     }
 
     function onSubmit(event) {
-        event.preventDefault();
-        //Guardar en la Database
         const { nombre, apellido, telefono, email} = formData
-        console.log(formData);
+        let variant = 'light';
+        event.preventDefault();
         setLoading(true)
         const orden = database.collection("orders");
         const newOrder = {
@@ -38,20 +35,20 @@ export const EndPurcharse = () => {
         };
         orden.add(newOrder).then(({id})=> {
             setOrderId(id);
+            variant = 'success';
+            setLoading(true);
         }).catch (err => {
-            console.log("Macho Error");
+            let variant = 'warning';
         }).finally (() => {
             setLoading(false)
         });
-
-        alert(
-          `Your name is ${formData.nombre} ${formData.apellido} and you have ${
-            formData.telefono
-          } years`
-        );
         console.log(idOrden);
+        {loading ? <Alert variant={variant}>Gracias por si Compra, Orden: {idOrden}</Alert> : <Alert variant={variant}>Error</Alert>} 
+        
       }
    
+//PONER UN useEffect para el tema de las cargadas y salvADAS EN base de datos
+
     return (
         <>
         <Container>

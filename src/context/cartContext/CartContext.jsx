@@ -60,30 +60,3 @@ return (
         </CartContext.Provider>
         )
 }
-
-    // function itemCount () {
-    //     //Aca quizas se podria usar reduce en cart con el campo cant
-    //     let total=0;
-    //         for(let i = 0; i <= cart.length; i++) total+=cart[i];
-    //         return total
-    // }
-
-    // function isEmpty() {
-    //     if (cart.length > 0) { 
-    //         console.log("tiene Items")
-    //         return false
-    //     } else {
-    //         console.log("NO tiene Items")
-    //         return true
-    //     }
-    // }
-
-        // const getOrder - () = {}
-
-    // function totalCardItems () {
-    //     if (cart.length > 0){
-    //         let totItems = (cart.map(obj => (obj.price * obj.qnty)))
-    //         return totItems.reduce((acc,cur) => acc + cur)
-    //     }
-        
-    // }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Image, Button, Container, Table }  from 'react-bootstrap';
+import { Image, Badge , Container }  from 'react-bootstrap';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { ItemCount } from '../itemCount/ItemCount';
 import { Link } from "react-router-dom";
@@ -19,13 +19,14 @@ export const ItemDetail = ({ item }) => {
     return (
         <>
             <Container>
-                    <Image src="https://firebasestorage.googleapis.com/v0/b/coderhose-apstore.appspot.com/o/1.jpg?alt=media&token=bb5d866d-6295-42e2-b9a2-143be695afdc" roundedCircle />
-                    <h4>Categoria</h4>    
-                    <p>{item.category}</p>              
+                    <p></p>
+                    <h3>{item.name}</h3>
+                    <Image src={item.pictureUrl} thumbnail />
+                    <p><Badge variant="info">{item.category}</Badge></p>              
                     <h4>Detalle</h4>    
                     <p>{item.detail}</p>
                     <h4>Precio U$S: {item.price}</h4>
-                    {!show && <ItemCount initial={1} stock={10} onAdd={onAdd} />}
+                    {!show && <ItemCount initial={1} stock={item.stock} onAdd={onAdd} />}
                     {show && <Link to="/cart">Termina tu Compra</Link>}
             </Container>
         </>
