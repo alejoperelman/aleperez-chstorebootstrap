@@ -23,7 +23,6 @@ export const EndPurcharse = () => {
 
     function onSubmit(event) {
         const { nombre, apellido, telefono, email} = formData
-        let variant = 'light';
         event.preventDefault();
         setLoading(true)
         const orden = database.collection("orders");
@@ -35,20 +34,14 @@ export const EndPurcharse = () => {
         };
         orden.add(newOrder).then(({id})=> {
             setOrderId(id);
-            variant = 'success';
             setLoading(true);
         }).catch (err => {
-            let variant = 'warning';
+
         }).finally (() => {
             setLoading(false)
         });
-        console.log(idOrden);
-        {loading ? <Alert variant={variant}>Gracias por si Compra, Orden: {idOrden}</Alert> : <Alert variant={variant}>Error</Alert>} 
-        
       }
-   
 //PONER UN useEffect para el tema de las cargadas y salvADAS EN base de datos
-
     return (
         <>
         <Container>
@@ -72,6 +65,7 @@ export const EndPurcharse = () => {
                 </Form.Group>
                 <Button variant="success" type="submit" onClick={evt => onSubmit(evt)}>Comprar</Button>
             </Form>
+            {loading ? <Alert variant="success">Gracias por su Compra, Orden: {idOrden}</Alert> : <Alert variant="warning">Error</Alert>} 
         </Container>
         </>
     )

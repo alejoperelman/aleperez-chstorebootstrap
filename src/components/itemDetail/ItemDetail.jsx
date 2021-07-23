@@ -22,7 +22,7 @@ export const ItemDetail = ({ item }) => {
                     <p></p>
                     <h3>{item.name}</h3>
                     <Image src={item.pictureUrl} thumbnail />
-                    <p><Badge variant="info">{item.category}</Badge></p>              
+                    <p>Categoria: <Badge variant="info">{item.category}</Badge></p>              
                     <h4>Detalle</h4>    
                     <p>{item.detail}</p>
                     <h4>Precio U$S: {item.price}</h4>
