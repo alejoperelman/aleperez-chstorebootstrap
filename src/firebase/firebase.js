@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 //import { database } from '../firebase/'
 
@@ -16,6 +16,7 @@ const fb = firebase.initializeApp(firebaseConfig)
 
 //disponible para todos
 export const database = fb.firestore()
+
 
 // <!-- The core Firebase JS SDK is always required and must be listed first -->
 // <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>

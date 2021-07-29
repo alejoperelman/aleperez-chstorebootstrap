@@ -6,16 +6,13 @@ import { CartContext } from '../../context/cartContext/CartContext';
 import { ItemCount } from '../itemCount/ItemCount';
 import { Link } from "react-router-dom";
 
-
 export const ItemDetail = ({ item }) => {
     const [show, setShow] = useState(false);
     const { addItem  } = useContext(CartContext)
-
     const onAdd = (quantity) => {
       setShow(true);
       addItem(item, quantity);
     }
-  
     return (
         <>
             <Container>

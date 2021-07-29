@@ -10,7 +10,6 @@ export const CartProvider = ({ children }) => {
     const addItem = (item, qnty ) => {
         const {id, name, category, detail, price} = item;
         const newCart = cart;
-//        setTotalItems(parseint(totalItems) + parseInt(qnty));
         if (cart.length > 0){
             if (isInCart(id)) { 
                 let index = cart.findIndex(obj => obj.id === id )

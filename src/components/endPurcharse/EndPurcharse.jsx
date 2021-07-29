@@ -1,12 +1,12 @@
 import react from 'react';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/cartContext/CartContext';
-import { Button, Form, Container, Alert }  from 'react-bootstrap';
+import { Button, Form, Container, Alert, Image }  from 'react-bootstrap';
 import { database } from '../../firebase/firebase';
-//import '@firebase/firestore';
+import '@firebase/firestore';
 
 export const EndPurcharse = () => {
-    const {cart, setCart } = useContext(CartContext);
+    const {cart, clear } = useContext(CartContext);
     const { totalAmount, setTotalAmount} = useContext(CartContext);
     const [loading, setLoading] = useState(false);
     const [idOrden, setOrderId] = useState();
@@ -16,8 +16,7 @@ export const EndPurcharse = () => {
             telefono:'',
             email:''
     });
-    const [isFormDisabled, setIsFormDisabled] = useState(true);
-    const onNameChange = e => {
+        const onNameChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value});
     }
 
@@ -29,24 +28,24 @@ export const EndPurcharse = () => {
         const newOrder = {
             buyer: formData,
             items: cart,
-            //date: firebase.firestore.Timestamp.fromDate(new Date()),
+            //date: firebase.Timestamp.fromDate(new Date()),
             total: totalAmount,
         };
         orden.add(newOrder).then(({id})=> {
             setOrderId(id);
             setLoading(true);
+            clear(); 
         }).catch (err => {
 
         }).finally (() => {
-            setLoading(false)
+            //setLoading(false)
         });
       }
-//PONER UN useEffect para el tema de las cargadas y salvADAS EN base de datos
     return (
         <>
         <Container>
             <h1>Finalice su Compra<br></br></h1>
-            <Form onClick={onSubmit}>
+            <Form>
                 <Form.Group className="mb-3" controlId="formGridName">
                         <Form.Label>Nombre</Form.Label>
                         <Form.Control name ="nombre" onChange={ evt => onNameChange(evt)} placeholder="Nombre" />
@@ -65,7 +64,7 @@ export const EndPurcharse = () => {
                 </Form.Group>
                 <Button variant="success" type="submit" onClick={evt => onSubmit(evt)}>Comprar</Button>
             </Form>
-            {loading ? <Alert variant="success">Gracias por su Compra, Orden: {idOrden}</Alert> : <Alert variant="warning">Error</Alert>} 
+            {loading ? <Alert variant="success">Gracias por su Compra, Orden: {idOrden} </Alert> : <Alert variant="light"></Alert>} 
         </Container>
         </>
     )

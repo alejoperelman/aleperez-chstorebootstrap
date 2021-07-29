@@ -11,12 +11,10 @@ export const Cart = () => {
     const {cart, setCart } = useContext(CartContext);
     const { totalAmount, setTotalAmount} = useContext(CartContext);
     const [loading, setLoading] = useState(false)
-    //let totales = 0;
 
     const completaCompra = () => {
         setLoading(true);
-      }
-
+    }
     return (
         <>
         <Container>
@@ -33,7 +31,6 @@ export const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        
                         {   cart.map((articulo) => (
                         <>
                         <tr>
@@ -56,7 +53,7 @@ export const Cart = () => {
                 <Link to="/" >
                     <Button variant="light" href="/cart"> Volver </Button>
                 </Link>
-                <Button variant="success" type="submit" onClick={() => completaCompra()}>Completar Compra</Button>
+                <Button variant="success" type="submit" onClick={() => completaCompra()}>Finalizar Compra</Button>
                 <Button variant="danger" href="/" type="submit" onClick={() => clear()}>Limpiar el Carro </Button>
             </ButtonGroup>
 
