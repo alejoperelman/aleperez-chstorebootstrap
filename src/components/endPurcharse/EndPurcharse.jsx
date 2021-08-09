@@ -3,7 +3,6 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { Button, Form, Container, Alert, Image }  from 'react-bootstrap';
 import { database } from '../../firebase/firebase';
-import '@firebase/firestore';
 
 export const EndPurcharse = () => {
     const {cart, clear } = useContext(CartContext);
@@ -28,7 +27,6 @@ export const EndPurcharse = () => {
         const newOrder = {
             buyer: formData,
             items: cart,
-            //date: firebase.Timestamp.fromDate(new Date()),
             total: totalAmount,
         };
         orden.add(newOrder).then(({id})=> {

@@ -1,6 +1,5 @@
-import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
-//import { database } from '../firebase/'
 
   var firebaseConfig = {
     apiKey: "AIzaSyBEiUFa5ZQiszdLdngthLtao4mFAvXbhdU",
